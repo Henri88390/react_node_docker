@@ -2,7 +2,7 @@ FROM node:17-alpine
 
 RUN npm install -g nodemon
 
-WORKDIR /app/api
+WORKDIR /react_node_docker/api
 
 COPY package.json .
 
