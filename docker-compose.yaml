@@ -4,7 +4,7 @@ services:
     build: ./api
     container_name: api_c
     ports: 
-      - '4001:4000'
+      - '4000:4000'
     volumes:
       - ./api:/react_node_docker/api
       - /react_node_docker/api/node_modules
@@ -12,6 +12,6 @@ services:
     build: ./app
     container_name: frontend_c
     ports:
-      - '3001:3000'
+      - '3000:3000'
     stdin_open: true
     tty: true

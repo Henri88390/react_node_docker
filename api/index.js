@@ -1,33 +1,14 @@
 const express = require("express");
+const cors = require("cors");
+const blogs = require("./blogs.json");
 const app = express();
-const parkings = require("./parkings.json");
 
-app.get("/parkings", (req, res) => {
-  res.status(200).json(parkings);
-});
+app.use(cors());
 
-app.get("/parkings/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const parking = parkings.find((parking) => parking.id === id);
-  res.status(200).json(parking);
-});
-
-app.put("/parkings/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  let parking = parkings.find((parking) => parking.id === id);
-  (parking.name = req.body.name),
-    (parking.city = req.body.city),
-    (parking.type = req.body.type),
-    res.status(200).json(parking);
-});
-
-app.delete("/parkings/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  let parking = parkings.find((parking) => parking.id === id);
-  parkings.splice(parkings.indexOf(parking), 1);
-  res.status(200).json(parkings);
+app.get("/", (_, res) => {
+  res.json(blogs);
 });
 
 app.listen(4000, () => {
-  console.log("Listening on port 4000...");
+  console.log("listening for requests on port 4000");
 });
